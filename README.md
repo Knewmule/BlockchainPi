@@ -5,4 +5,4 @@ https://www.superdatascience.com/blockchain/
 Extra Course Material:
 https://datamastersclub.com/blockchain-a-z-learn-how-to-build-your-first-blockchain/S
 pip install Flask==0.12.2
-Download the Postman tgz
+Download the Postman tgzupdated to Flask 3.0.3
