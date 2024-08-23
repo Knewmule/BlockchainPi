@@ -8,11 +8,11 @@ from flask import Flask, jsonify
 #2 Build a blockchain
 class Blockchain:
     def __init__():
-        self.chain = []
+        self.chain=[]
         self.create_block(proof = 1, previous_hash = '0')
 
     def create_block(self,proof,previous_hash):
-        block = {'index':len(self.chain)+1,
+        block = {'index': len(self.chain)+1,
                  'timestamp' : str(datetime.datetime.now()),
                  'proof' : proof,
                  'previous_hash' : previous_hash}
@@ -58,6 +58,7 @@ app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 #creating a blockchain
 blockchain = Blockchain
+# blockchain.create_block([],1,0)
 #Mining a new Block
 @app.route('/mine_block', methods=['GET'])
 def mine_block():
@@ -74,8 +75,9 @@ def mine_block():
     return jsonify(response), 200
 
 #Getting the full Blockchain
+@app.route('/get_chain', methods=['GET'])
 def get_chain():
-    response = {'chain' : blockchain.chain,
+    response = {'chain':blockchain.chain,
                 'length' : len(blockchain.chain)}
     return jsonify(response), 200
 
