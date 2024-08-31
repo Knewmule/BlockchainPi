@@ -7,7 +7,7 @@ from flask import Flask, jsonify
 
 #2 Build a blockchain
 class Blockchain:
-    def __init__():
+    def __init__(self):
         self.chain=[]
         self.create_block(proof = 1, previous_hash = '0')
 
@@ -40,7 +40,7 @@ class Blockchain:
         block_index = 1
         while block_index < len(chain):
             block = chain[block_index]
-            if block['previous_hash'] != self.hash(previous_hash):
+            if block['previous_hash'] != self.hash(previous_block):
                 return False
             previous_proof = previous_block['proof']
             proof = block['proof']
@@ -49,7 +49,7 @@ class Blockchain:
                 check_proof = False
             previous_block = block
             block_index += 1
-        return True
+            return True
 
 #3 Mining a blockchain
 #Creating a Web App
@@ -57,7 +57,7 @@ app = Flask(__name__)
 # AFter Flask update add this 
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 #creating a blockchain
-blockchain = Blockchain
+blockchain = Blockchain()
 # blockchain.create_block([],1,0)
 #Mining a new Block
 @app.route('/mine_block', methods=['GET'])
